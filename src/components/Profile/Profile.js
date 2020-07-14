@@ -4,7 +4,67 @@ import './Profile.css'
 const Profile = ({ isProfileOpen, toggleModal }) => {
   return (
     <div className='profile-modal'>
-      <button onClick={toggleModal}>Click</button>
+      <article className='br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-white'>
+        <main className='pa4 black-80 w-80'>
+          <img
+            src='http://tachyons.io/img/logo.jpg'
+            class='h3 w3 dib'
+            alt='avatar'
+          />
+          <h1>User</h1>
+          <h4>Image submitted: 5</h4>
+          <p>Member since: Jan</p>
+          <hr />
+          <label className='mt2 fw6' htmlFor='user-name'>
+            Name
+          </label>
+          <input
+            className='pa2 ba w-100'
+            placeholder='Joe'
+            type='text'
+            name='user-name'
+            id='name'
+            onChange={this.onNameChange}
+          />
+          <label className='mt2 fw6' htmlFor='user-age'>
+            Age
+          </label>
+          <input
+            className='pa2 ba w-100'
+            placeholder='16'
+            type='text'
+            name='user-age'
+            id='name'
+            onChange={this.onNameChange}
+          />
+          <label className='mt2 fw6' htmlFor='user-pet'>
+            Pet
+          </label>
+          <input
+            className='pa2 ba w-100'
+            placeholder='Fish'
+            type='text'
+            name='user-pet'
+            id='name'
+            onChange={this.onNameChange}
+          />
+          <div
+            className='mt4'
+            style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+            <button className='b pa2 grow pointer hover-white w-40 bg-light-green b--black-20'>
+              Save
+            </button>
+            <button
+              onClick={toggleModal}
+              className='b pa2 grow pointer hover-white w-40 bg-light-red b--black-20'>
+              Cancel
+            </button>
+          </div>
+        </main>
+        <div class='modal-close' onClick={toggleModal}>
+          &times;
+        </div>
+      </article>
     </div>
   )
 }
