@@ -5,8 +5,9 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap'
+import './ProfileIcon.css'
 
-const ProfileIcon = () => {
+const ProfileIcon = ({ onRouteChange }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const toggle = () => setDropdownOpen(prevState => !prevState)
 
@@ -24,13 +25,16 @@ const ProfileIcon = () => {
           />
         </DropdownToggle>
         <DropdownMenu
+          right
           className='b--transparent shadow-5'
           style={{
             marginTop: '20px',
             backgroundColor: 'rgba(255,255,255,0.5)'
           }}>
           <DropdownItem>View Profile</DropdownItem>
-          <DropdownItem>Signout</DropdownItem>
+          <DropdownItem onClick={() => onRouteChange('signout')}>
+            Sign Out
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </div>
