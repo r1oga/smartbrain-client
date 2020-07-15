@@ -27,27 +27,23 @@ class Signin extends React.Component {
         password: this.state.signInPassword
       })
     })
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
         if (data.id && data.success) {
           this.saveAuthTokenInSession(data.token)
 
           // fetch user profile
-          // fetch(`https://localhost:3000/profile/${data.id}`, {
-          //   method: 'get',
-          //   headers: { Authorization: data.token }
-          // }).then(res => {
-          //   {
-          //     console.log(res)
-          //     res.json()
-          //   }
-          // })
-          // .then(user => {
-          //   if (user && user.email) {
-          //     this.props.loadUser(user)
-          //     this.props.onRouteChange('home')
-          //   }
-          // })
+          fetch(`http://localhost:3000/profile/${data.id}`, {
+            method: 'get',
+            headers: { Authorization: data.token }
+          })
+            .then(res => res.json())
+            .then(user => {
+              if (user && user.email) {
+                this.props.loadUser(user)
+                this.props.onRouteChange('home')
+              }
+            })
         }
       })
   }
