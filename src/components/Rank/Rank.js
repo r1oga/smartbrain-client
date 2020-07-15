@@ -14,7 +14,7 @@ const Rank = ({ name, entries }) => {
   }
   useEffect(() => {
     generateEmoji(entries)
-  }, [])
+  }, [entries])
 
   return (
     <div>
