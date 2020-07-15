@@ -47,6 +47,32 @@ class App extends Component {
     this.state = initialState
   }
 
+  componentDidMount() {
+    const token = window.sessionStorage.getItem('token')
+    if (token) {
+      fetch('https://localhost:3001/signin', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json', Authorization: token }
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.id) {
+            fetch(`https://localhost:3001/profile/${data.id}`, {
+              method: 'post',
+              headers: { Authorization: token }
+            })
+              .then(res => res.json())
+              .then(user => {
+                if (user && user.email) {
+                  this.loadUser(user)
+                  this.onRouteChange('home')
+                }
+              })
+          }
+        })
+    }
+  }
+
   loadUser = data => {
     this.setState({
       user: {
@@ -139,8 +165,8 @@ class App extends Component {
       user
     } = this.state
     return (
-      <div className='App'>
-        <Particles className='particles' params={particlesOptions} />
+      <div className="App">
+        <Particles className="particles" params={particlesOptions} />
         <Navigation
           isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
