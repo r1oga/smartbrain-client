@@ -26,64 +26,69 @@ const Profile = ({ isProfileOpen, toggleModal, user, loadUser }) => {
   const onProfileUpdate = data => {
     fetch(`http://localhost:3000/profile/${id}`, {
       method: 'post',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: window.sessionStorage.getItem('token')
+      },
       body: JSON.stringify({ formInput: data })
     })
       .then(res => {
-        toggleModal()
-        loadUser({ ...user, ...data })
+        if (res.status === 200 || res.status === 304) {
+          toggleModal()
+          loadUser({ ...user, ...data })
+        }
       })
       .catch(console.log)
   }
 
   return (
-    <div className='profile-modal'>
-      <article className='br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-white'>
-        <main className='pa4 black-80 w-80'>
+    <div className="profile-modal">
+      <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-white">
+        <main className="pa4 black-80 w-80">
           <img
-            src='http://tachyons.io/img/logo.jpg'
-            className='h3 w3 dib'
-            alt='avatar'
+            src="http://tachyons.io/img/logo.jpg"
+            className="h3 w3 dib"
+            alt="avatar"
           />
           <h1>{nameInput}</h1>
           <h4>{`Images submitted: ${entries}`}</h4>
           <p>{`Member since: ${new Date(joined).toLocaleDateString()}`}</p>
           <hr />
-          <label className='mt2 fw6' htmlFor='user-name'>
+          <label className="mt2 fw6" htmlFor="user-name">
             Name
           </label>
           <input
-            className='pa2 ba w-100'
+            className="pa2 ba w-100"
             placeholder={name}
-            type='text'
-            name='user-name'
-            id='name'
+            type="text"
+            name="user-name"
+            id="name"
             onChange={onFormChange}
           />
-          <label className='mt2 fw6' htmlFor='user-age'>
+          <label className="mt2 fw6" htmlFor="user-age">
             Age
           </label>
           <input
-            className='pa2 ba w-100'
+            className="pa2 ba w-100"
             placeholder={age}
-            type='text'
-            name='user-age'
-            id='name'
+            type="text"
+            name="user-age"
+            id="name"
             onChange={onFormChange}
           />
-          <label className='mt2 fw6' htmlFor='user-pet'>
+          <label className="mt2 fw6" htmlFor="user-pet">
             Pet
           </label>
           <input
-            className='pa2 ba w-100'
+            className="pa2 ba w-100"
             placeholder={pet}
-            type='text'
-            name='user-pet'
-            id='name'
+            type="text"
+            name="user-pet"
+            id="name"
             onChange={onFormChange}
           />
           <div
-            className='mt4'
+            className="mt4"
             style={{ display: 'flex', justifyContent: 'space-evenly' }}>
             <button
               onClick={() =>
@@ -93,17 +98,17 @@ const Profile = ({ isProfileOpen, toggleModal, user, loadUser }) => {
                   pet: petInput
                 })
               }
-              className='b pa2 grow pointer hover-white w-40 bg-light-green b--black-20'>
+              className="b pa2 grow pointer hover-white w-40 bg-light-green b--black-20">
               Save
             </button>
             <button
               onClick={toggleModal}
-              className='b pa2 grow pointer hover-white w-40 bg-light-red b--black-20'>
+              className="b pa2 grow pointer hover-white w-40 bg-light-red b--black-20">
               Cancel
             </button>
           </div>
         </main>
-        <div class='modal-close' onClick={toggleModal}>
+        <div class="modal-close" onClick={toggleModal}>
           &times;
         </div>
       </article>
