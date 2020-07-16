@@ -50,15 +50,15 @@ class App extends Component {
   componentDidMount() {
     const token = window.sessionStorage.getItem('token')
     if (token) {
-      fetch('https://localhost:3001/signin', {
-        method: 'post',
+      fetch('http://localhost:3000/signin', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: token }
       })
         .then(res => res.json())
         .then(data => {
           if (data && data.id) {
-            fetch(`https://localhost:3001/profile/${data.id}`, {
-              method: 'post',
+            fetch(`http://localhost:3000/profile/${data.id}`, {
+              method: 'get',
               headers: { Authorization: token }
             })
               .then(res => res.json())
@@ -177,8 +177,8 @@ class App extends Component {
       user
     } = this.state
     return (
-      <div className="App">
-        <Particles className="particles" params={particlesOptions} />
+      <div className='App'>
+        <Particles className='particles' params={particlesOptions} />
         <Navigation
           isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
