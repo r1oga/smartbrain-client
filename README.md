@@ -1,4 +1,5 @@
 # Intelbrain
+![app screenshot](./appScreenshot.png)
 ## What it does
 ### User Management
 - Registration
