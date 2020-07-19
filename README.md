@@ -6,9 +6,9 @@
 - Authentication
 - Profile update
 ### Face recognition
-- Lets user upload an image
-- Recognizes whether human faces are in the image
-- Tracks number of images uploaded by user
+- Let user upload an image
+- Recognize whether human faces are in the image
+- Track number of images uploaded by user
 
 ## How it is built
 ### Front End
@@ -17,7 +17,8 @@
 - [reactsrap](https://reactstrap.github.io/): easy to use React Bootstrap 4 components
 
 ### Back End
-- [intelbrain-api](https://github.com/r1oga/intelbrain-api)
+- API (REST, storage, session management): [intelbrain-api](https://github.com/r1oga/intelbrain-api)
+- Badge feature: [AWS Lambda](https://aws.amazon.com/lambda/)
 
 ## Local development
 1. Clone this repository
