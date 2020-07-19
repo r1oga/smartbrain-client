@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-const LAMBDA_URI = `${process.env.LAMBDA_URL}`
+const LAMBDA_URI =
+  'https://1lynhlrtql.execute-api.eu-central-1.amazonaws.com/prod/rank'
 
 const Rank = ({ name, entries }) => {
   const [emoji, setEmoji] = useState('')

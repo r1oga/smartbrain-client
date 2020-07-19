@@ -50,14 +50,14 @@ class App extends Component {
   componentDidMount() {
     const token = window.sessionStorage.getItem('token')
     if (token) {
-      fetch(`${process.env.API_URL}/signin`, {
+      fetch(`https://intelbrain-api.herokuapp.com/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: token }
       })
         .then(res => res.json())
         .then(data => {
           if (data && data.id) {
-            fetch(`${process.env.API_URL}/profile/${data.id}`, {
+            fetch(`https://intelbrain-api.herokuapp.com/profile/${data.id}`, {
               method: 'get',
               headers: { Authorization: token }
             })
@@ -117,7 +117,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input })
-    fetch(`${process.env.API_URL}/imageurl`, {
+    fetch(`https://intelbrain-api.herokuapp.com/imageurl`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch(`${process.env.API_URL}/image`, {
+          fetch(`https://intelbrain-api.herokuapp.com/image`, {
             method: 'put',
             headers: {
               'Content-Type': 'application/json',

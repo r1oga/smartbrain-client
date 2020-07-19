@@ -24,7 +24,7 @@ const Profile = ({ isProfileOpen, toggleModal, user, loadUser }) => {
   }
 
   const onProfileUpdate = data => {
-    fetch(`${process.env.API_URL}/profile/${id}`, {
+    fetch(`https://intelbrain-api.herokuapp.com/profile/${id}`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

@@ -19,7 +19,7 @@ class Signin extends React.Component {
   }
 
   onSubmitSignIn = () => {
-    fetch(`${process.env.API_URL}/signin`, {
+    fetch(`https://intelbrain-api.herokuapp.com/signin`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -33,7 +33,7 @@ class Signin extends React.Component {
           this.saveAuthTokenInSession(data.token)
 
           // fetch user profile
-          fetch(`${process.env.API_URL}/profile/${data.id}`, {
+          fetch(`https://intelbrain-api.herokuapp.com/profile/${data.id}`, {
             method: 'get',
             headers: { Authorization: data.token }
           })
