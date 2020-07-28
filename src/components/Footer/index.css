@@ -1,0 +1,21 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+a {
+  margin-left: 5px;
+  color: #000 !important;
+  text-decoration: underline !important;
+}
+
+a:hover {
+  color: #fff !important;
+}
+
+p {
+  margin-bottom: 0px !important;
+}
